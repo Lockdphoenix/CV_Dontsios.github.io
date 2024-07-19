@@ -187,7 +187,11 @@
                                             Fell free to download the demo and give it a try.
                                             </span></p>
                                         <div class="spacer-10"></div>
-                                        <a target="_blank" download="demo" href="images/assets/Princess_Dragon_Slayer_demo.exe" class="btn-main wow fadeInUp lead" data-wow-delay="1.25s">Download Demo</a>                                
+                                        <!--
+                                        <a target="_blank" download="demo" href="images/assets/Princess_Dragon_Slayer_demo.exe" 
+                                            class="btn-main wow fadeInUp lead" data-wow-delay="1.25s">Download Demo</a>  -->
+                                        <a id="downloadLink" href="images/assets/Princess_Dragon_Slayer_demo.exe" target="_blank" class="btn-main wow fadeInUp lead animated" data-wow-delay="1.25s" style="visibility: visible; animation-delay: 1.25s; animation-name: fadeInUp;">Download Demo</a>
+
         
                                     </div>
                                     
@@ -264,7 +268,18 @@
     <script src="js/designesia.js"></script>
     <script src="js/particles.js"></script>
     <script src="js/particles-settings.js"></script>
-
+    <script>
+    document.getElementById("downloadLink").addEventListener("click", function(event) {
+        event.preventDefault();
+        var link = document.createElement("a");
+        link.href = this.href;
+        link.download = "demo";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.open(this.href, "_blank");
+    });
+    </script>
 </body>
 
 </html>
